@@ -19,5 +19,6 @@ namespace consumo_de_api.Models
         public string birthday { get; set; }
         public List<string> occupation { get; set; }
         public string status { get; set; }
+        public string img { get; set; }
     }
 }
