@@ -14,7 +14,7 @@ namespace consumo_de_api.Controllers
     public class CharacterController : Controller
     {
         //Hosted web API REST Service base url
-        string BaseUrl = "https://www.breakingbadapi.com/";
+        string BaseUrl = "https://www.breakingbadapi.com/api/";
 
         public async Task<ActionResult> Index()
         {
@@ -29,7 +29,7 @@ namespace consumo_de_api.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Sending request to find web api REST service resource GetAllCharacters using HttpClient
-                HttpResponseMessage Res = await client.GetAsync("api/characters");
+                HttpResponseMessage Res = await client.GetAsync("characters");
 
                 //Checkinng the response is succesful or not which is sent using HttpClient
                 if(Res.IsSuccessStatusCode)
@@ -40,16 +40,17 @@ namespace consumo_de_api.Controllers
                     Characters = JsonConvert.DeserializeObject<List<CharacterModel>>(ChaResponse);
                 }
 
-                //Returning the Character list to view 
-                return View(Characters);
+                
             }
+            //Returning the Character list to view 
+            return View(Characters);
 
         }
 
-        //// GET: Character
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        // GET: Character
+        public ActionResult Inde()
+        {
+            return View();
+        }
     }
 }
